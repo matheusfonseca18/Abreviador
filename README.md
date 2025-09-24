@@ -28,13 +28,13 @@ O programa aplica <a href="#regras">regras</a> específicas de abreviação, rem
 
 <h3>Qual problema resolve?</h3>
 
-Temos uma base onde diariamente são injetos diversos dados cadastrados por diversas pessoas, esses dados podem ser **anunciante, marca ou versão**.
+Temos uma base onde diariamente são injetados diversos dados cadastrados por diversas pessoas, esses dados podem ser **anunciante, marca ou versão**.
 
 São pessoas cadastrando esses dados, que devem seguir um padrão para não serem duplicados. Porém abre precedente para interpretações, e isso acaba duplicando os dados na base. O foco do programa é acabar com essas interpretações.
 
 <h4>Exemplo:</h4>
 
-Seguindo as <a href="#regras">regras</a> o dado pode ter até 30 caracteres contado coms espaços, então o dado é **"Chapeuzinho Vermelho e o Lobo Bibi Ferreira"**, que possui 43 caracteres. Cada interpretação pode gerar um abreviação diferente, **"Chap Verm Lobo Bibi Ferreira"** ou **"Chapeuzin Vermel Lob Bibi Fer"**.
+Seguindo as <a href="#regras">regras</a> o dado pode ter até 30 caracteres, contado com os espaços. Então o dado é **"Chapeuzinho Vermelho e o Lobo Bibi Ferreira"**, que possui 43 caracteres. Cada interpretação pode gerar um abreviação diferente, **"Chap Verm Lobo Bibi Ferreira"** ou **"Chapeuzin Vermel Lob Bibi Fer"**.
 
 O programa terá apenas uma interpretação desse exemplo, **"Chapeuzinho V Lobo Bibi Ferr"**.
 
