@@ -91,8 +91,8 @@ Seu dado já estará no formato correto, aparecerá no campo abaixo da entrada, 
   </tr>
 </table>
 
-<!-- <h3>Documentações que podem ser úteis</h3>
+<h3>Documentações que podem ser úteis</h3>
 
-[📖 Documentação simples](https://www.atlassian.com/br/git/tutorials/making-a-pull-request)
+[📖 Documentação simples](https://github.com/matheusfonseca18/Abreviador/blob/main/Documenta%C3%A7%C3%A3o%20Abreviador.pdf)
 
-[📝 Documentação técnica](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) -->
+<!-- [📝 Documentação técnica](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) -->
