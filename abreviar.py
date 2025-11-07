@@ -1,4 +1,30 @@
 import unicodedata
+import re
+
+
+# atualiza contagem de caracteres
+def atualizar_contagem(entry, label, default_color):
+    text = entry.get()
+    count = len(text)
+
+    count_str = str(count)
+
+    if count > 30:
+        label.configure(text=count_str, text_color="red")
+    elif count == 30:
+        label.configure(text=count_str, text_color="orange")
+    else:
+        label.configure(text=count_str, text_color=default_color)
+
+
+# atualiza contagem de caractees no anunciante
+def atualizar_contagem_anuncante(entry, label):
+    text = entry.get()
+    count = len(text)
+
+    count_str = str(count)
+
+    label.configure(text=count_str)
 
 
 # tira os espaços exedentes
@@ -10,7 +36,8 @@ def limpar_espacos(frase):
 
 # tira preposições
 def limpar_preposicoes(frase):
-    prep = {'A', 'E', 'O', 'AS', 'OS', 'DA', 'DE', 'DO', 'DAS', 'DOS'}
+    prep = {'A', 'E', 'O', 'AS', 'OS', 'DA', 'DE', 'DO', 'DAS', 'DOS', 'EM', 'NO', 'NA', 'NOS', 'NAS', 
+        'COM', 'POR'}
     palavras = frase.split()
     filtrada = []
     for p in palavras:
@@ -21,6 +48,102 @@ def limpar_preposicoes(frase):
         return ' '.join(palavras)
 
     return ' '.join(filtrada)
+
+
+# tira palavras proibidas
+def limpar_proibidas(frase):
+    proibidas = {'TEATRO', 'ESTADIO', 'CONGRESSO'}
+    palavras = frase.split()
+    filtrada = []
+    for p in palavras:
+        if p not in proibidas:
+            filtrada.append(p)
+
+    if not filtrada:
+        return ' '.join(palavras)
+
+    return ' '.join(filtrada)
+
+
+# abrevia a palavra corretamente no campo de marca
+def trocar_palavra_marca (frase):
+    palavras = {'PREFEITURA': 'PREF',
+                'CAMARA': 'CAM',
+                'CENTRO': 'CTO',
+                'MUNICIPAL': 'MUN',
+                'GOVERNO': 'GOV',
+                'FESTIVAL': 'FEST',
+                'ENCONTRO': 'ENC',
+                'INTERNACIONAL': 'INT',
+                'NACIONAL': 'NAC',
+                'MATTEL': 'MATT',
+                'HASBRO': 'HASB',
+                'PASSADO': 'PASS',
+                'PRESENTE': 'PRES',
+                'FUTURO': 'FUT',
+                'ESPECIAL': 'ESP'}
+
+    for p, i in palavras.items():
+        frase = frase.replace(p, i)
+
+    return frase
+
+
+# abrevia a palavra corretamente no campo de marca
+def trocar_palavra_versao (frase):
+    palavras = {'CENTRO': 'CTO',
+                'FESTIVAL': 'FEST',
+                'ENCONTRO': 'ENC',
+                'INTERNACIONAL': 'INT',
+                'NACIONAL': 'NAC',
+                'PASSADO': 'PASS',
+                'PRESENTE': 'PRES',
+                'FUTURO': 'FUT',
+                'ESPECIAL': 'ESP'}
+
+    for p, i in palavras.items():
+        frase = frase.replace(p, i)
+
+    return frase
+
+
+# troca as preposições no campo de anunciante
+def trocar_palavra_anunciante (frase):
+    palavras = {'A': 'a',
+                'E': 'e',
+                'O': 'o',
+                'As': 'as',
+                'Os': 'os',
+                'Da': 'da',
+                'De': 'de',
+                'Do': 'do',
+                'Das': 'das',
+                'Dos': 'dos',
+                'Em': 'em',
+                'Na': 'na',
+                'No': 'no',
+                'Nas': 'nas',
+                'Nos': 'nos',
+                'Com': 'com',
+                'Por': 'por'
+                }
+    
+    frase = frase.title()
+
+    for p, i in palavras.items():
+        frase = re.sub(rf'\b{p}\b', i, frase)
+
+    return frase
+
+
+# troca o & por e
+def trocar_e(frase):
+    e = {'&': 'e'}
+
+    for e, i in e.items():
+        frase = frase.replace(e, i)
+    
+    return frase
 
 
 # tira os acentos
@@ -103,10 +226,12 @@ def abreviar_marca(frase):
     frase = limpar_espacos(frase)
     frase = limpar_acento(frase)
     frase = limpar_especial(frase)
+    frase = limpar_proibidas(frase)
     tamanho = contar(frase)
 
     if tamanho > 30:
         nova = limpar_preposicoes(frase)
+        nova = trocar_palavra_marca(nova)
         if nova != frase:
             frase = nova
             tamanho = contar(frase)
@@ -142,6 +267,13 @@ def abreviar_versao(frase):
     frase = limpar_acento(frase)
     frase = limpar_especial(frase)
     tamanho = contar(frase)
+
+    if tamanho > 30:
+        nova = limpar_preposicoes(frase)
+        nova = trocar_palavra_versao(nova)
+        if nova != frase:
+            frase = nova
+            tamanho = contar(frase)
 
     while tamanho > 30:
         palavra = maior_palavra_versao(frase)
@@ -181,5 +313,8 @@ def abreviar_versao(frase):
 def anunciante(frase):
     frase = limpar_espacos(frase)
     frase = limpar_acento(frase)
+    frase = trocar_e(frase)
+    frase = limpar_especial(frase)
+    frase = trocar_palavra_anunciante(frase)
 
-    return frase.title()
+    return frase
