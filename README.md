@@ -1,82 +1,88 @@
 <h1 align="center" style="font-weight: bold;">Abreviador ✂️</h1>
 
 <p align="center">
+   <a href="./README.pt-br.md">🇧🇷 Versão em Português (Brasil)</a>
+</p>
+
+<p align="center">
   <img src="https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54" alt="Python"/>
 </p>
 
-
 <p align="center">
  <a href="#tech">Technologies</a> • 
- <a href="#abaout">Sobre</a> • 
-  <a href="#use">Como usar</a> •
-  <a href="#regras">Regras</a> •
+ <a href="#about">About</a> • 
+ <a href="#use">How to Use</a> •
+ <a href="#rules">Rules</a> •
 </p>
 
-<h2 id="tech">💻 Technologias</h2>
+<h2 id="tech">💻 Technologies</h2>
 
-- Python
-- Biblioteca UnicodeData
-- CustomTKinter
+- Python  
+- UnicodeData Library  
+- CustomTKinter  
 
-<h2 id="abaout">📌 Sobre</h2>
+<h2 id="about">📌 About</h2>
 
-<h3>O que faz</h3>
+<h3>What it does</h3>
 
-O Abreviador é uma aplicação feita em **Python** para auxiliar na formatação de textos de **Anunciantes, Marcas e Versões**.  
+**Abreviador** is a Python application designed to assist in formatting text for **Advertisers, Brands, and Versions**.  
 
-O programa aplica <a href="#regras">regras</a> específicas de abreviação, remoção de acentos, espaços e caracteres especiais, deixando o texto pronto para uso imediato (já copiado para a área de transferência).
+The program applies specific <a href="#rules">rules</a> for abbreviation, removal of accents, spaces, and special characters, leaving the text ready for immediate use (already copied to the clipboard).
 
-<h3>Qual problema resolve?</h3>
+<h3>What problem does it solve?</h3>
 
-Temos uma base onde diariamente são injetados diversos dados cadastrados por diversas pessoas, esses dados podem ser **anunciante, marca ou versão**.
+We have a database where data such as **advertiser, brand, or version** are entered daily by several people.  
 
-São pessoas cadastrando esses dados, que devem seguir um padrão para não serem duplicados. Porém abre precedente para interpretações, e isso acaba duplicando os dados na base. O foco do programa é acabar com essas interpretações.
+Since these entries should follow a specific pattern to avoid duplicates, human interpretation can lead to inconsistencies and duplicated data.  
+The goal of this program is to eliminate those variations by enforcing a single standard.
 
-<h4>Exemplo:</h4>
+<h4>Example:</h4>
 
-Seguindo as <a href="#regras">regras</a> o dado pode ter até 30 caracteres, contado com os espaços. Então o dado é **"Chapeuzinho Vermelho e o Lobo Bibi Ferreira"**, que possui 43 caracteres. Cada interpretação pode gerar um abreviação diferente, **"Chap Verm Lobo Bibi Ferreira"** ou **"Chapeuzin Vermel Lob Bibi Fer"**.
+Following the <a href="#rules">rules</a>, data can have a maximum of 30 characters (including spaces).  
+For instance, the entry **"Chapeuzinho Vermelho e o Lobo Bibi Ferreira"** has 43 characters.  
+Each person might abbreviate it differently, e.g. **"Chap Verm Lobo Bibi Ferreira"** or **"Chapeuzin Vermel Lob Bibi Fer"**.  
 
-O programa terá apenas uma interpretação desse exemplo, **"Chapeuzinho V Lobo Bibi Ferr"**.
+However, the program provides only one standardized interpretation:  
+**"Chapeuzinho V Lobo Bibi Ferr"**.
 
-<h2 id="use">❓ Como usar</h2>
+<h2 id="use">❓ How to Use</h2>
 
-O programa possui 3 entradas de dados, Anunciante, Marca e Versão. Cada entrada tem suas <a href="#regras">regras</a> distintas.
+The program has three input fields: **Anunciante (Advertiser)**, **Marca (Brand)**, and **Versão (Version)**. Each has its own <a href="#rules">rules</a>.
 
-Digite ou cole seu dado no campo correto, clique no botão "Formatar", e pronto!
+Type or paste your text in the correct field, click **"Formatar"**, and that’s it!  
+Your formatted result will appear below in the “Your text will appear here” field — and it will also be available on your **clipboard (CTRL + V)**.
 
-Seu dado já estará no formato correto, aparecerá no campo abaixo da entrada, “Seu texto aparecerá aqui“ e no seu **CTRL + V**.
+<h2 id="rules">📋 Rules</h2>
 
-<h2 id="regras">📋 Regras</h2>
+<h3>Apply to all fields</h3>
 
-<h3>Funcionam em todos os campos</h3>
+- Removes extra spaces (beginning, middle, and end)  
+- Removes all accents  
+- Removes all special characters  
 
-- Remove espaços excedentes, começo, meio e fim
-- Remove todos os acentos
-- Remove todos os caracteres especiais
+<h3>Advertiser Field</h3>
 
-<h3>Campo de Anunciante</h3>
+- Capitalizes the first letter of each word  
+- No character limit  
 
-- Formata a frase, primeira letra de cada palavra em maiúscula
-- Não possui limite de caracteres
+<h3>Brand Field</h3>
 
-<h3>Campo de Marca</h3>
+- 30-character limit  
+- Abbreviation always ends with a consonant  
+- Converts the entire phrase to uppercase  
+- Removes prepositions  
+- Keeps the main brand (first word) intact whenever possible, abbreviating only when necessary  
 
-- Limite de 30 caracteres
-- Abreviação sempre termina em consoante
-- Formata a frase em maiúsculo
-- Remove preposições
-- Busca manter a marca principal (primeira palavra) integra, abrevia apenas se for necessário
+<h3>Version Field</h3>
 
-<h3>Campo de Versão</h3>
-
-- Limite de 30 caracteres
-- Abreviação sempre termina em consoante
-- Formata a frase em maiúsculo
-- Não abrevia palavras “blindadas”, até o momento são elas:  
+- 30-character limit  
+- Abbreviation always ends with a consonant  
+- Converts the entire phrase to uppercase  
+- Does not abbreviate “protected” words, which currently include:  
   - `GLOBO`, `SBT`, `RECORD`, `REDETV`, `BAND`, `CULTURA`,  
     `ESPN`, `SPORTV`, `TNT`, `MAT`, `VES`, `NOT`, `MAD`, `FUT`, `BOLETIM`
 
-<h2 id="colab">🤝 Criado por</h2>
+<h2 id="colab">🤝 Created by</h2>
 
 <table>
   <tr>
@@ -91,8 +97,6 @@ Seu dado já estará no formato correto, aparecerá no campo abaixo da entrada, 
   </tr>
 </table>
 
-<h3>Documentações que podem ser úteis</h3>
+<h3>Useful Documentation</h3>
 
-[📖 Documentação simples](https://github.com/matheusfonseca18/Abreviador/blob/main/Documenta%C3%A7%C3%A3o%20Abreviador.pdf)
-
-<!-- [📝 Documentação técnica](https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716) -->
+[📖 Simple Documentation (PDF)](https://github.com/matheusfonseca18/Abreviador/blob/main/Documenta%C3%A7%C3%A3o%20Abreviador.pdf)
