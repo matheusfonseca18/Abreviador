@@ -1,7 +1,7 @@
 <h1 align="center" style="font-weight: bold;">Abreviador ✂️</h1>
 
 <p align="center">
-   <a href="./README.pt-br.md">🇧🇷 Versão em Português (Brasil)</a>
+   <a href="README-PT-BR.md">🇧🇷 Versão em Português (Brasil)</a>
 </p>
 
 <p align="center">
@@ -100,3 +100,4 @@ Your formatted result will appear below in the “Your text will appear here” 
 <h3>Useful Documentation</h3>
 
 [📖 Simple Documentation (PDF)](https://github.com/matheusfonseca18/Abreviador/blob/main/Documenta%C3%A7%C3%A3o%20Abreviador.pdf)
+
